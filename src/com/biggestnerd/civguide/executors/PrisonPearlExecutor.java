@@ -8,9 +8,9 @@ import org.bukkit.inventory.PlayerInventory;
 import com.biggestnerd.civguide.CivGuide;
 import com.untamedears.PrisonPearl.events.PrisonPearlEvent;
 
-public class PPExecutor extends GuideExecutor {
+public class PrisonPearlExecutor extends GuideExecutor {
 
-	public PPExecutor(CivGuide plugin) {
+	public PrisonPearlExecutor(CivGuide plugin) {
 		super(plugin);
 	}
 	

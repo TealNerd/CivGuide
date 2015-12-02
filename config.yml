@@ -17,8 +17,28 @@ PrisonPearl:
     hover: You were killed by another player who was holding an ender pearl, you will be trapped in the end until you are freed. Do /ppl to find the location of your pearl.
 Citadel:
   ReinforcementDamageEvent:
-    text: You have damaged a reinforced block, hover for more info
+    text: You have damaged a reinforced block.
     hover: Blocks can be reinforced with stone, iron, and diamond. Reinforced blocks need to be broken multiple times before they will break for good.
+FactoryMod:
+  PlayerInteractEvent:
+    text: You have interacted with a factory.
+    hover: Factories are special structures consisting of a chest, crafting table, and furnace in that order. Factories allow for more efficient production of goods with a greater initial investment. See the factorymod wiki for more info.
+ItemExchange:
+  PlayerInteractEvent:
+    text: You have interacted with a shop chest.
+    hover: ItemExchange is a plugin for creating shops. When interacting with shop chests, punch them with a fist to switch exchanged. Once you're on the desired exchange, hit the chest with the input item. To create a shop, see the item exchange wiki.
+RealisticBiomes:
+  PlayerInteractEvent:
+    text: You have discovered realistic biomes.
+    hover: RealisticBiomes is a plugin to limit plant growth. Hit the ground with a crop, or right click a crop with a stick to see how long it will take to grow, and how far along it is. Most crops are persistant, taking a set amount of time to grow based on where it's planted.
+ArthropodEgg:
+  PlayerItemHeldEvent:
+    text: You have acquired a bane of arthropods sword, which does some cool shit.
+    hover: When you kill a neutral, adult animal with a bane of arthropods sword, there is a chance the animal will drop a spawn egg rather than it's normal drops. The chance is increased based on the level of bane as well as any looting enchantments.
+CombatTagPlus:
+  PlayerCombatTagEvent:
+    text: You have been combat tagged.
+    hover: When a player hits another player, both players are combat tagged for 30 seconds. When a player is combat tagged the timer is refreshed every time they hit or get hit. You are also combat tagged when throwing ender pearls. If you log out while combat tagged you will leave an npc that can be killed.
 
 sql:
   dbname: minecraft

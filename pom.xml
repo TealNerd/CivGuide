@@ -58,6 +58,30 @@
 			<version>2.6.1</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>net.minelink</groupId>
+			<artifactId>CombatTagPlus</artifactId>
+			<version>1.2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.igotyou</groupId>
+			<artifactId>FactoryMod</artifactId>
+			<version>1.4.0-124</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.untamedears</groupId>
+			<artifactId>ItemExchange</artifactId>
+			<version>1.0.0-71</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.untamedears</groupId>
+			<artifactId>RealisticBiomes</artifactId>
+			<version>0.6.5.0-29</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -68,6 +92,10 @@
 		<repository>
 			<id>civcraft-repo</id>
 			<url>http://build.civcraft.co:8080/plugin/repository/everything/</url>
+		</repository>
+		<repository>
+			<id>minelink-releases</id>
+			<url>http://repo.minelink.net/content/repositories/releases/</url>
 		</repository>
 	</repositories>
 </project>

@@ -13,7 +13,10 @@ import com.biggestnerd.civguide.GuidedResponse;
  */
 public abstract class GuideExecutor implements Listener {
 	
+	protected CivGuide plugin;
+	
 	public GuideExecutor(CivGuide plugin) {
+		this.plugin = plugin;
 		if(plugin.getServer().getPluginManager().isPluginEnabled(getPluginName())) {
 			FileConfiguration config = plugin.getConfig();
 			if(config.getConfigurationSection(getPluginName()) != null) {
@@ -50,7 +53,7 @@ public abstract class GuideExecutor implements Listener {
 				response.generateMessage().sendToPlayer(player);
 			}
 		} else {
-			CivGuide.getInstance().getLogger().severe(eventName + " was not configured, cannot send " + player.getName() + " a message");
+			plugin.getLogger().severe(eventName + " was not configured, cannot send " + player.getName() + " a message");
 		}
 	}
 }
