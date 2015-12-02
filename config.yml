@@ -1,0 +1,79 @@
+#Config for CivGuide
+#Example
+#------------
+#PluginName:
+#  EventName:
+#    text: short message for chat, the plugin will automatically append "hover for more info"
+#    hover: longer message the user will get when hovering over the initial message
+#  SecondEvent:
+#    text: text for the second event
+#    hover: hover text for second event
+PrisonPearl:
+  PlayerItemHeldEvent:
+    text: You have picked up an ender pearl.
+    hover: When you kill another player while holding a pearl, that player will be imprisoned in the end until released. Pearls must be stored in a container with coal or they will be freed when the server restarts.
+  PrisonPearlEvent:
+    text: You have been imprisoned by an ender pearl.
+    hover: You were killed by another player who was holding an ender pearl, you will be trapped in the end until you are freed. Do /ppl to find the location of your pearl.
+Citadel:
+  ReinforcementDamageEvent:
+    text: You have damaged a reinforced block, hover for more info
+    hover: Blocks can be reinforced with stone, iron, and diamond. Reinforced blocks need to be broken multiple times before they will break for good.
+
+sql:
+  dbname: minecraft
+  host: localhost
+  pass: root
+  port: 3306
+  user: root
+
+#Books below!
+#Reference names for each book, if you don't put the book name here it won't be loaded
+booklist: 
+  - "welcome"
+  - "ham"
+
+# A book can have 256 characters per page w/ 50 pages max.
+books:
+  welcome:
+    fullname: "Welcome to CivCraft"
+    pages:
+      - "   ~c:r~iWhat is Civraft?~n~r~qCivCraft is an experiment for communities & political ideologies [...] to work together to create and shape civilization or to watch it fall~q~n-Ttk2, server owner"
+      - "   ~iWhat is Civraft?~n~bNOT just survivial:~n~rAdmins are hands-off and only handle glitches and hackers.~n~bNOT just chaos:~n~rMods allow players and towns to enforce their own rules.~n~bNOT just foreplay;)~n~rNobody pretends -- conflict is genuine and heated."
+      - "   ~iBasic Mechanics~n~r-The world is a circle~n-Stretches 15k blocks~n-500 block chat range~n-Respawn in random area unless you sleep~n-Food grows slowly~n-Mobs spawn sparsely~n-No Nether portals is a lie~n-Nether biomes also~n-No XP from killing"
+      - " Ect. Ect. Ect.~n The welcome to civcraft book needs to be updated anyways, nose goes."
+  ham:
+    fullname: "Green Eggs & Ham"
+    pages:
+      - "~iI do not like ~c:grgreen ~c:beggs and ham..."
+      - "~iI do not like them.."
+      - "~i~u~c:rSam~c:b-~c:dgI~c:b-~c:gAm."
+
+# Page code reference:
+#-----------------------
+# ~n - New Line
+# ~q - Insert Quotation "
+# ~s - Strikethrough
+# ~b - Bold
+# ~i - Italic
+# ~u - Underline
+# ~r - Reset/remove formatting
+# -- Coloring:
+# ~c:m - Magic
+# ~c:a - Aqua
+# ~c:b - Black
+# ~c:bl - Blue
+# ~c:da - Dark Aqua
+# ~c:db - Dark Blue
+# ~c:dg - Dark Grey
+# ~c:dgr - Dark Green
+# ~c:dp - Dark Purple
+# ~c:dr - Dark Red
+# ~c:go - Gold
+# ~c:g - Gray
+# ~c:gr - Green
+# ~c:lp - Light Purple
+# ~c:r - Red
+# ~c:w - White
+# ~c:y - Yellow
+#-----------------------

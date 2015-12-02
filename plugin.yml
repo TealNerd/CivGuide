@@ -1,0 +1,15 @@
+name: CivGuide
+author: biggestnerd
+version: 1.0.0
+main: com.biggestnerd.civguide.CivGuide
+commands:
+  dissmiss:
+    description: "Permanently dimsiss the guide for a specific event"
+    usage: "Usage: /dismiss <eventname>"
+  guide:
+    description: "Gives the player the designated guide"
+    usage: "Usage: /guide <guidename>"
+permissions:
+  civguide.dismiss:
+    description: "Allow players to dismiss guide events"
+    default: true
