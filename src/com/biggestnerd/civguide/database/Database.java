@@ -1,4 +1,4 @@
-package com.biggestnerd.civguide;
+package com.biggestnerd.civguide.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,16 +25,16 @@ public class Database {
 		this.user = user;
 		this.password = password;
 		this.logger = logger;
-	}
-
-	public boolean connect() {
-		String jdbc = "jdbc:mysql://" + host + ":" + port + "/" + db + "?user="
-				+ user + "&password=" + password;
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 		} catch (Exception ex) {
 			throw new DataSourceException("Failed to initialize JDBC driver.");
 		}
+	}
+
+	public boolean connect() {
+		String jdbc = "jdbc:mysql://" + host + ":" + port + "/" + db + "?user="
+				+ user + "&password=" + password;
 		try {
 			connection = DriverManager.getConnection(jdbc);
 			this.logger.log(Level.INFO, "Connected to database!");

@@ -1,18 +1,13 @@
 package com.biggestnerd.civguide;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-import java.util.logging.Level;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.biggestnerd.civguide.database.DAOManager;
 import com.biggestnerd.civguide.executors.ArthroEggExecutor;
 import com.biggestnerd.civguide.executors.CitadelExecutor;
 import com.biggestnerd.civguide.executors.CombatTagExecutor;
@@ -23,7 +18,6 @@ import com.biggestnerd.civguide.executors.RealisticBiomesExecutor;
 
 public class CivGuide extends JavaPlugin implements Listener {
 	
-	private Database db;
 	private static CivGuide instance;
 
 	@Override
@@ -33,8 +27,10 @@ public class CivGuide extends JavaPlugin implements Listener {
 		saveDefaultConfig();
 		reloadConfig();
 		loadGuides();
-		initializeDatabase();
-		getCommand("guide").setExecutor(new GuideCommand(this));
+		DAOManager.getInstance();
+		GuideCommand gc = new GuideCommand();
+		getCommand("guide").setExecutor(gc);
+		getCommand("dismiss").setExecutor(gc);
 		getServer().getPluginManager().registerEvents(this, this);
 		new CitadelExecutor(this);
 		new PrisonPearlExecutor(this);
@@ -50,63 +46,6 @@ public class CivGuide extends JavaPlugin implements Listener {
 		GuideBook.clearBooks();
 		GuidedResponse.clearResponses();
 		getLogger().info("CivGuide Disabled");
-	}
-	
-	/**
-	 * initializes the database and creates the table if it doesn't exist
-	 */
-	public void initializeDatabase() {
-		FileConfiguration config = getConfig();
-		ConfigurationSection sql = config.getConfigurationSection("sql");
-		String dbName = sql.getString("dbname");
-		String host = sql.getString("host");
-		String pass = sql.getString("pass");
-		int port = sql.getInt("port");
-		String user = sql.getString("user");
-		db = new Database(host, port, dbName, user, pass, getLogger());
-		db.connect();
-		String createTable = "CREATE TABLE IF NOT EXISTS dismissed (event VARCHAR(40) NOT NULL, uuid VARCHAR(40) NOT NULL)";
-		db.execute(createTable);
-	}
-	
-	/**
-	 * @return A list of players who have dismissed the event
-	 * @param event the event you want to get dismissals for
-	 */
-	public ArrayList<UUID> getDismissedPlayersForEvent(String event) {
-		ArrayList<UUID> players = new ArrayList<UUID>();
-		try {
-			PreparedStatement request = db.prepareStatement("SELECT * FROM dismissed WHERE event = ?");
-			request.setString(1, event);
-			ResultSet set = request.executeQuery();
-			while(set.next()) {
-				players.add(UUID.fromString(set.getString("uuid")));
-			}
-		} catch (SQLException ex) {
-			getLogger().log(Level.SEVERE, "Could not load dismissals for " + event, ex);
-		}
-		return players;
-	}
-	
-	/**
-	 * Dismisses the event for a player
-	 * 
-	 * @param event the event you want to dismiss
-	 * @param player the uuid as a string of the player dismissing the event
-	 */
-	public void addDismissal(String event, String player) {
-		if(getDismissedPlayersForEvent(event).contains(UUID.fromString(player))) {
-			return;
-		}
-		try {
-			PreparedStatement playerDismiss = db.prepareStatement("INSERT INTO dismissed (event, uuid) VALUES (?,?)");
-			playerDismiss.setString(1, event);
-			playerDismiss.setString(2, player);
-			playerDismiss.execute();
-			GuidedResponse.dismiss(event.split("\\.")[1], player);
-		} catch (SQLException ex) {
-			getLogger().log(Level.SEVERE, "Error dismissing event " + event + " for " + player, ex);
-		}
 	}
 	
 	/**

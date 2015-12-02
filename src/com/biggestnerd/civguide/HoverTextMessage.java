@@ -1,44 +1,29 @@
 package com.biggestnerd.civguide;
 
-import org.bukkit.ChatColor;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import com.google.gson.Gson;
-
-import net.minecraft.server.v1_8_R3.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class HoverTextMessage {
 	
-	private String text = "";
-	private ChatEvent hoverEvent;
-	private ChatEvent clickEvent;
+	private final static int CHAT_SIZE = 52;
+	private TextComponent message;
 
-	public HoverTextMessage(String event, ChatColor color, String text, String hover) {
+	public HoverTextMessage(String event, net.md_5.bungee.api.ChatColor color, String text, String hover) {
+		message = new TextComponent(text);
 		if(color != null) {
-			this.text = color.toString();
+			message.setColor(color);
 		}
-		this.text += text;
-		String hoverLines = splitHoverText(hover);
-		hoverEvent = new ChatEvent("show_text", hoverLines);
-		clickEvent = new ChatEvent("run_command", "/dismiss " + event);
+		hover = splitHoverText(hover);
+		message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(hover).create()));
+		message.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/dismiss " + event));
 	}
 	
 	public void sendToPlayer(Player player) {
-		Gson gson = new Gson();
-		String jsonMessage = gson.toJson(this);
-		((CraftPlayer) player).getHandle().playerConnection.sendPacket(new PacketPlayOutChat(ChatSerializer.a(jsonMessage)));
-	}
-	
-	private class ChatEvent {
-		private String action;
-		private String value;
-		
-		public ChatEvent(String action, String value) {
-			this.action = action;
-			this.value = value;
-		}
+		player.spigot().sendMessage(message);
 	}
 	
 	public String splitHoverText(String hoverText) {
@@ -48,7 +33,7 @@ public class HoverTextMessage {
 		for(int i = 0; i < words.length; i++) {
 			lineBuilder.append(words[i] + " ");
 			currentLine.append(words[i] + " ");
-			if(currentLine.toString().length() >= 42) {
+			if(currentLine.toString().length() >= CHAT_SIZE) {
 				lineBuilder.append('\n');
 				currentLine = new StringBuilder();
 			}

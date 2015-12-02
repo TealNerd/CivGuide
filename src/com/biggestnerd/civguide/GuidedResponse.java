@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
 
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+
+import com.biggestnerd.civguide.database.DAOManager;
+
+import net.md_5.bungee.api.ChatColor;
 
 public class GuidedResponse {
 
@@ -33,11 +36,11 @@ public class GuidedResponse {
 	private static HashMap<String, GuidedResponse> responses = new HashMap<String, GuidedResponse>();
 	
 	public GuidedResponse(String event, String text, String hoverText) {
-		if((dismissed = CivGuide.getInstance().getDismissedPlayersForEvent(event)) == null) {
+		if((dismissed = DAOManager.getInstance().getDismissedPlayersForEvent(event)) == null) {
 			dismissed = new ArrayList<UUID>();
 		}
 		this.event = event;
-		this.text = text + " Hover for more";
+		this.text = text + " Hover for more or click to dismiss";
 		this.hoverText = hoverText;
 		String[] eventParts = event.split("\\.");
 		//if a guide exists for the plugin it'll let the player know they can get more info

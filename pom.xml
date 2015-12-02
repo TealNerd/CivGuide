@@ -82,6 +82,12 @@
 			<version>0.6.5.0-29</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>vg.civcraft.mc.namelayer</groupId>
+			<artifactId>NameLayer</artifactId>
+			<version>2.5.11</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<repositories>

@@ -2,9 +2,11 @@ name: CivGuide
 author: biggestnerd
 version: 1.0.0
 main: com.biggestnerd.civguide.CivGuide
+depend: [NameLayer]
+softdepend: [Citadel,ArthropodEgg,CombatTagPlus,ItemExchange,FactoryMod,PrisonPearl,RealisticBiomes]
 commands:
-  dissmiss:
-    description: "Permanently dimsiss the guide for a specific event"
+  dismiss:
+    description: "Permanently dismiss the guide for a specific event"
     usage: "Usage: /dismiss <eventname>"
   guide:
     description: "Gives the player the designated guide"
