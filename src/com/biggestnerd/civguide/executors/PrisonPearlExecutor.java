@@ -1,9 +1,10 @@
 package com.biggestnerd.civguide.executors;
 
-import org.bukkit.Material;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCreativeEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import com.biggestnerd.civguide.CivGuide;
 import com.untamedears.PrisonPearl.events.PrisonPearlEvent;
@@ -20,11 +21,16 @@ public class PrisonPearlExecutor extends GuideExecutor {
 	}
 	
 	@EventHandler
-	public void onItemPickup(PlayerItemHeldEvent event) {
-		PlayerInventory inv = event.getPlayer().getInventory();
-		if(inv.getItem(event.getNewSlot()) != null && inv.getItem(event.getNewSlot()).getType() == Material.ENDER_PEARL) {
-			sendEventMessage(event.getEventName(), event.getPlayer());
+	public void onPlayerPickupItem(PlayerPickupItemEvent event) {
+		sendEventMessage(event.getEventName(), event.getItem().getItemStack(), event.getPlayer());
+	}
+	
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent event) {
+		if(event instanceof InventoryCreativeEvent) {
+			return;
 		}
+		sendEventMessage(event.getEventName(), event.getCurrentItem(), Bukkit.getPlayer(event.getWhoClicked().getUniqueId()));
 	}
 
 	@EventHandler

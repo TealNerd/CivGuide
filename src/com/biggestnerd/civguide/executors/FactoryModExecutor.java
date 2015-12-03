@@ -1,9 +1,12 @@
 package com.biggestnerd.civguide.executors;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 import com.biggestnerd.civguide.CivGuide;
 import com.github.igotyou.FactoryMod.FactoryModPlugin;
@@ -28,5 +31,15 @@ public class FactoryModExecutor extends GuideExecutor {
 				sendEventMessage(event.getEventName(), event.getPlayer());
 			}
 		}
+	}
+	
+	@EventHandler
+	public void onPlayerPickupItem(PlayerPickupItemEvent event) {
+		sendEventMessage(event.getEventName(), event.getItem().getItemStack(), event.getPlayer());
+	}
+	
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent event) {
+		sendEventMessage(event.getEventName(), event.getCurrentItem(), Bukkit.getPlayer(event.getWhoClicked().getUniqueId()));
 	}
 }

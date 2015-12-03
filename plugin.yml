@@ -1,9 +1,9 @@
 name: CivGuide
 author: biggestnerd
-version: 1.0.0
+version: 1.2.0
 main: com.biggestnerd.civguide.CivGuide
-depend: [NameLayer]
-softdepend: [Citadel,ArthropodEgg,CombatTagPlus,ItemExchange,FactoryMod,PrisonPearl,RealisticBiomes]
+depend: [NameLayer, CivMenu]
+softdepend: [Citadel,ArthropodEgg,CombatTagPlus,ItemExchange,FactoryMod,PrisonPearl,RealisticBiomes,CivPets,MusterCull,Random-Spawn,AFKPGC]
 commands:
   dismiss:
     description: "Permanently dismiss the guide for a specific event"

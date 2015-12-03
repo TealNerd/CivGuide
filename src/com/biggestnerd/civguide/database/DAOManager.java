@@ -2,11 +2,11 @@ package com.biggestnerd.civguide.database;
 
 public class DAOManager {
 	
-	private static DismissalDatabase dao;
+	private static DismissalDAO dao;
 
-	public static DismissalDAO getInstance() {
+	public static IDismissalDAO getInstance() {
 		if(dao == null) {
-			return dao = new DismissalDatabase();
+			return dao = new DismissalDAO();
 		}
 		if(!dao.valid()) {
 			dao.initializeDatabase();

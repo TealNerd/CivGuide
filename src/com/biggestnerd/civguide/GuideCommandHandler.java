@@ -9,7 +9,7 @@ import com.biggestnerd.civguide.database.DAOManager;
 
 import net.md_5.bungee.api.ChatColor;
 
-public class GuideCommand implements CommandExecutor {
+public class GuideCommandHandler implements CommandExecutor {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -26,7 +26,7 @@ public class GuideCommand implements CommandExecutor {
 				player.sendMessage(ChatColor.RED + "You have already dismissed the " + args[0]);
 				return true;
 			}
-			DAOManager.getInstance().addDismissal(args[0], player.getUniqueId().toString());
+			DAOManager.getInstance().addDismissal(args[0], player.getUniqueId());
 			player.sendMessage(ChatColor.GREEN + "You have dismissed the " + args[0] + " you will no longer see messages about this event");
 			return true;
 		} else if(command.getName().equalsIgnoreCase("guide")) {

@@ -2,43 +2,93 @@
 #Example
 #------------
 #PluginName:
-#  EventName:
-#    text: short message for chat, the plugin will automatically append "hover for more info"
-#    hover: longer message the user will get when hovering over the initial message
-#  SecondEvent:
-#    text: text for the second event
-#    hover: hover text for second event
+#  CustomEventName:
+#    events:
+#      - ActualBukkitEvent
+#      - ActualBukkitEvent
+#    text: Text to display
+#  RegularBukkitEvent:
+#    text: text to display
 PrisonPearl:
-  PlayerItemHeldEvent:
-    text: You have picked up an ender pearl.
-    hover: When you kill another player while holding a pearl, that player will be imprisoned in the end until released. Pearls must be stored in a container with coal or they will be freed when the server restarts.
+  PearlPickupEvent:
+    events:
+      - InventoryClickEvent
+      - PlayerPickupItemEvent
+    trigger:
+      material: ENDER_PEARL
+    text: When you kill another player while holding a pearl, that player will be imprisoned in the end until released. Pearls must be stored in a container with coal or they will be freed when the server restarts.
   PrisonPearlEvent:
-    text: You have been imprisoned by an ender pearl.
-    hover: You were killed by another player who was holding an ender pearl, you will be trapped in the end until you are freed. Do /ppl to find the location of your pearl.
+    text: When a player is pearled they will be trapped in the end until they're freed. If you're pearled, you can use the command /ppl to get the location of your pearl in the overworld.
 Citadel:
+  url: https://github.com/civcraft/citadel/wiki
   ReinforcementDamageEvent:
-    text: You have damaged a reinforced block.
-    hover: Blocks can be reinforced with stone, iron, and diamond. Reinforced blocks need to be broken multiple times before they will break for good.
+    text: Blocks can be reinforced with stone, iron, and diamond. Reinforced blocks need to be broken multiple times before they will break for good. If you reinforce a something that can be opened such as a door or chest it will only be accessible to the people on your NameLayer group
 FactoryMod:
+  url: https://github.com/civcraft/factorymod/wiki
   PlayerInteractEvent:
-    text: You have interacted with a factory.
-    hover: Factories are special structures consisting of a chest, crafting table, and furnace in that order. Factories allow for more efficient production of goods with a greater initial investment. See the factorymod wiki for more info.
+    text: Factories are special structures consisting of a chest, crafting table, and furnace in that order. Factories allow for more efficient production of goods with a greater initial investment. See the factorymod wiki for more info.
+  GetCompactedItem:
+    events:
+      - PlayerPickupEvent
+      - InventoryClickEvent
+    trigger:
+      material: '.*'
+      lore:
+        - Compacted Item
+    text: You have picked up a compacted item. Items can be compacted in a special factory with special items called crates. Compacted items represent a full stack of the item.
 ItemExchange:
+  url: https://github.com/civcraft/itemexchange/wiki
   PlayerInteractEvent:
-    text: You have interacted with a shop chest.
-    hover: ItemExchange is a plugin for creating shops. When interacting with shop chests, punch them with a fist to switch exchanged. Once you're on the desired exchange, hit the chest with the input item. To create a shop, see the item exchange wiki.
+    text: ItemExchange is a plugin for creating shops. When interacting with shop chests, punch them with a fist to switch exchanged. Once you're on the desired exchange, hit the chest with the input item. To create a shop, see the item exchange wiki.
 RealisticBiomes:
+  url: https://github.com/civcraft/realisticbiomes/wiki
   PlayerInteractEvent:
-    text: You have discovered realistic biomes.
-    hover: RealisticBiomes is a plugin to limit plant growth. Hit the ground with a crop, or right click a crop with a stick to see how long it will take to grow, and how far along it is. Most crops are persistant, taking a set amount of time to grow based on where it's planted.
+    text: RealisticBiomes is a plugin to limit plant growth. Hit the ground with a crop, or right click a crop with a stick to see how long it will take to grow, and how far along it is. Most crops are persistant, taking a set amount of time to grow based on where it's planted.
 ArthropodEgg:
-  PlayerItemHeldEvent:
-    text: You have acquired a bane of arthropods sword, which does some cool shit.
-    hover: When you kill a neutral, adult animal with a bane of arthropods sword, there is a chance the animal will drop a spawn egg rather than it's normal drops. The chance is increased based on the level of bane as well as any looting enchantments.
+  url: http://biggestnerd.com
+  GetBainSword:
+    events:
+      - PlayerPickupItemEvent
+      - InventoryClickEvent
+    trigger:
+      material: '.*_SWORD'
+      enchants:
+        - DAMAGE_ARTHROPODS
+    text: When you kill a neutral, adult animal with a bane of arthropods sword, there is a chance the animal will drop a spawn egg rather than it's normal drops. The chance is increased based on the level of bane as well as any looting enchantments.
+  GetSpawnEgg:
+    events:
+      - PlayerPickupItemEvent
+      - InventoryClickEvent
+    trigger:
+      material: MONSTER_EGG
+      duras:
+        - 65
+        - 90
+        - 91
+        - 92
+        - 93
+        - 94
+        - 95
+        - 98
+        - 96
+        - 100
+        - 101
+        - 120
+      text: When you kill a neutral, adult animal with a bane of arthropods sword, there is a chance the animal will drop a spawn egg rather than it's normal drops. The chance is increased based on the level of bane as well as any looting enchantments.
 CombatTagPlus:
   PlayerCombatTagEvent:
-    text: You have been combat tagged.
-    hover: When a player hits another player, both players are combat tagged for 30 seconds. When a player is combat tagged the timer is refreshed every time they hit or get hit. You are also combat tagged when throwing ender pearls. If you log out while combat tagged you will leave an npc that can be killed.
+    text: When a player hits another player, both players are combat tagged for 30 seconds. When a player is combat tagged the timer is refreshed every time they hit or get hit. You are also combat tagged when throwing ender pearls. If you log out while combat tagged you will leave an npc that can be killed.
+CivPets:
+  EntityTameEvent:
+    text: Animals can be untamed by right clicking them with cookies. Untamed animals can then be re-tamed like normal.
+MusterCull:
+  BreedEntity:
+    events:
+      - PlayerInteractEntityEvent
+    text: Mustercull is a plugin to limit mob spawning in an effort to reduce lag. If there are a lot of entities in one area as well as a lot of server lag MusterCull will begin killing the mobs. Try to kill animals as you breed them to prevent your farms from being culled.
+Random-Spawn:
+  PlayerRespawnEvent:
+    text: Random-Spawn is a plugin to randomly spawn players. Rather than spawning at a set spawn area, you will spawn in a random location when you die. You can set your bed like normal to spawn in the same place every time.
 
 sql:
   dbname: minecraft

@@ -4,19 +4,21 @@ import java.util.List;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.biggestnerd.civguide.database.DAOManager;
 import com.biggestnerd.civguide.executors.ArthroEggExecutor;
 import com.biggestnerd.civguide.executors.CitadelExecutor;
+import com.biggestnerd.civguide.executors.CivPetExecutor;
 import com.biggestnerd.civguide.executors.CombatTagExecutor;
 import com.biggestnerd.civguide.executors.FactoryModExecutor;
 import com.biggestnerd.civguide.executors.ItemExchangeExecutor;
+import com.biggestnerd.civguide.executors.MustercullExecutor;
 import com.biggestnerd.civguide.executors.PrisonPearlExecutor;
+import com.biggestnerd.civguide.executors.RandomSpawnExecutor;
 import com.biggestnerd.civguide.executors.RealisticBiomesExecutor;
 
-public class CivGuide extends JavaPlugin implements Listener {
+public class CivGuide extends JavaPlugin {
 	
 	private static CivGuide instance;
 
@@ -28,23 +30,24 @@ public class CivGuide extends JavaPlugin implements Listener {
 		reloadConfig();
 		loadGuides();
 		DAOManager.getInstance();
-		GuideCommand gc = new GuideCommand();
+		GuideCommandHandler gc = new GuideCommandHandler();
 		getCommand("guide").setExecutor(gc);
 		getCommand("dismiss").setExecutor(gc);
-		getServer().getPluginManager().registerEvents(this, this);
-		new CitadelExecutor(this);
-		new PrisonPearlExecutor(this);
 		new ArthroEggExecutor(this);
+		new CitadelExecutor(this);
+		new CivPetExecutor(this);
 		new CombatTagExecutor(this);
 		new FactoryModExecutor(this);
 		new ItemExchangeExecutor(this);
+		new MustercullExecutor(this);
+		new PrisonPearlExecutor(this);
+		new RandomSpawnExecutor(this);
 		new RealisticBiomesExecutor(this);
 	}
 	
 	@Override
 	public void onDisable() {
 		GuideBook.clearBooks();
-		GuidedResponse.clearResponses();
 		getLogger().info("CivGuide Disabled");
 	}
 	
