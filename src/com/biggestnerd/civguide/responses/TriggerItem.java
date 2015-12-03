@@ -24,16 +24,20 @@ public class TriggerItem {
 		if(enchants.size() > 0 && !enchants.isEmpty() && enchants != null && item.getItemMeta().hasEnchants()) {
 			for(String enchant : enchants) {
 				if(!item.getItemMeta().hasEnchant(Enchantment.getByName(enchant))) {
-					otherChecks = false;
+						otherChecks = false;
 				}
 			}
 		}
-		if(lore != null && lore.size() > 0 && !lore.isEmpty()) {
-			otherChecks = lore.equals(item.getItemMeta().getLore());
+		if(hasLore() != item.getItemMeta().hasLore() || ((hasLore() && item.getItemMeta().hasLore()) && !lore.equals(item.getItemMeta().getLore()))) {
+			otherChecks = false;
 		}
 		if(duras != null && duras.size() > 0 && !duras.isEmpty()) {
-			otherChecks = duras.contains(item.getDurability());
+			otherChecks = otherChecks && duras.contains(item.getDurability());
 		}
 		return item.getType().toString().matches(materialName) && otherChecks;
+	}
+	
+	private boolean hasLore() {
+		return lore != null && !lore.isEmpty() && lore.size() > 0;
 	}
 }

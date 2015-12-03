@@ -3,6 +3,7 @@ package com.biggestnerd.civguide.executors;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -60,9 +61,9 @@ public abstract class GuideExecutor implements Listener {
 			}
 			if(eventSection.getKeys(false).contains("trigger")) {
 				String materialName = eventSection.getString("trigger.material");
-				List<String> enchants = eventSection.getStringList("triggers.enchants");
-				List<String> lore = eventSection.getStringList("triggers.lore");
-				List<Short> duras = eventSection.getShortList("triggers.duras");
+				List<String> enchants = eventSection.getStringList("trigger.enchants");
+				List<String> lore = eventSection.getStringList("trigger.lore");
+				List<Short> duras = eventSection.getShortList("trigger.duras");
 				TriggerItem triggerItem = new TriggerItem(materialName, enchants, lore, duras);
 				responseMan.registerResponse(event, triggers, response, triggerItem);
 			} else {
@@ -89,6 +90,9 @@ public abstract class GuideExecutor implements Listener {
 	}
 	
 	protected void sendEventMessage(String eventName, ItemStack trigger, Player player) {
+		if(trigger == null || trigger.getType() == Material.AIR) {
+			return;
+		}
 		EventResponse response;
 		if((response = responseMan.getEventResponse(eventName, trigger)) != null) {
 			if(!response.isDismissed(player.getUniqueId())) {
