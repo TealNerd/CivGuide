@@ -30,8 +30,8 @@ ArthropodEgg:
       #  - 2
     text: Text to display to the player
   #Simple events consist only of a bukkit event name and text
-  BukkitEventName:
-    text: Text to display to the player
+  #BukkitEventName:
+    #text: Text to display to the player
 ```
 
 3) Create an executor for the plugin. It has to extend GuideExecutor. Override getPluginName() to return the name of the plugin. Event handling methods should call the method sendEventMessage() with either two arguments or three. The prior is sendEventMessage(String eventName, Player player) and the second is sendEventMessage(String eventName, ItemStack trigger, Player player). The latter should be used for custom events that have triggers. Without a trigger, you should check to make sure the event should go through, for instance make sure the InventoryClickEvent isn't an instance of InventoryCreativeEvent. Passing sendEventMEssage an item will check if it's a valid trigger for that event. Here's an example class for ArthropodEgg:
