@@ -49,10 +49,6 @@ import com.biggestnerd.civguide.CivGuide;
 
 public class ArthroEggExecutor extends GuideExecutor {
 
-	public ArthroEggExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "ArthropodEgg";
