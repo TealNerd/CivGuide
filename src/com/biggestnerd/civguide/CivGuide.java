@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.biggestnerd.civguide.database.DAOManager;
 import com.biggestnerd.civguide.executors.ArthroEggExecutor;
+import com.biggestnerd.civguide.executors.BetterShardsExecutor;
 import com.biggestnerd.civguide.executors.CitadelExecutor;
 import com.biggestnerd.civguide.executors.CivPetExecutor;
 import com.biggestnerd.civguide.executors.CombatTagExecutor;
