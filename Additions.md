@@ -2,9 +2,9 @@
 
 In this example, we'll be adding an executor for ArthropodEgg
 
-1. First you need to add the plugin to the CivGuide plugin.yml
+1) First you need to add the plugin to the CivGuide plugin.yml
 
-2. Then you need to add to the CivGuide config.yml in the following format:
+2) Then you need to add to the CivGuide config.yml in the following format:
 ```yml
 #The first thing in the section is the plugin name
 ArthropodEgg:
@@ -34,7 +34,7 @@ ArthropodEgg:
     text: Text to display to the player
 ```
 
-3. Create an executor for the plugin. It has to extend GuideExecutor. Override getPluginName() to return the name of the plugin. Event handling methods should call the method sendEventMessage() with either two arguments or three. The prior is sendEventMessage(String eventName, Player player) and the second is sendEventMessage(String eventName, ItemStack trigger, Player player). The latter should be used for custom events that have triggers. Without a trigger, you should check to make sure the event should go through, for instance make sure the InventoryClickEvent isn't an instance of InventoryCreativeEvent. Passing sendEventMEssage an item will check if it's a valid trigger for that event. Here's an example class for ArthropodEgg:
+3) Create an executor for the plugin. It has to extend GuideExecutor. Override getPluginName() to return the name of the plugin. Event handling methods should call the method sendEventMessage() with either two arguments or three. The prior is sendEventMessage(String eventName, Player player) and the second is sendEventMessage(String eventName, ItemStack trigger, Player player). The latter should be used for custom events that have triggers. Without a trigger, you should check to make sure the event should go through, for instance make sure the InventoryClickEvent isn't an instance of InventoryCreativeEvent. Passing sendEventMEssage an item will check if it's a valid trigger for that event. Here's an example class for ArthropodEgg:
 
 ```java
 package com.biggestnerd.civguide.executors;
@@ -73,4 +73,4 @@ public class ArthroEggExecutor extends GuideExecutor {
 }
 ```
 
-4. Lastly register the executor by instantiating it in the main plugin class
+4) Lastly register the executor by instantiating it in the main plugin class
