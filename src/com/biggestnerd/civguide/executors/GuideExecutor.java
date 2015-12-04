@@ -81,7 +81,7 @@ public abstract class GuideExecutor implements Listener {
 	protected void sendEventMessage(String eventName, Player player) {
 		EventResponse response;
 		if((response = responseMan.getEventResponse(eventName)) != null) {
-			if(!response.isDismissed(player.getUniqueId())) {
+			if(!response.isDismissed(player.getUniqueId()) && !player.hasPermission("civguide.bypass")) {
 				responseMan.sendMessage(response, player);
 			}
 		} else {
