@@ -2,28 +2,15 @@ package com.biggestnerd.civguide.executors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import vg.civcraft.mc.citadel.events.ReinforcementDamageEvent;
-
-public class CitadelExecutor extends GuideExecutor {
+public class JukeAlertExecutor extends GuideExecutor {
 
 	@Override
 	public String getPluginName() {
-		return "Citadel";
-	}
-
-	@EventHandler
-	public void onReinforcementDamage(ReinforcementDamageEvent event) {
-		sendEventMessage(event.getEventName(), event.getPlayer());
-	}
-	
-	@EventHandler
-	public void onBlockPlace(BlockPlaceEvent event) {
-		sendEventMessage(event.getEventName(), event.getPlayer());
+		return "JukeAlert";
 	}
 	
 	@EventHandler

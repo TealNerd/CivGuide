@@ -3,7 +3,7 @@ author: biggestnerd
 version: ${project.version}
 main: com.biggestnerd.civguide.CivGuide
 depend: [NameLayer, CivMenu]
-softdepend: [BetterShards,Citadel,ArthropodEgg,CombatTagPlus,ItemExchange,FactoryMod,PrisonPearl,RealisticBiomes,CivPets,MusterCull,Random-Spawn,AFKPGC]
+softdepend: [BetterShards,Citadel,ArthropodEgg,CombatTagPlus,ItemExchange,FactoryMod,PrisonPearl,RealisticBiomes,CivPets,MusterCull,Random-Spawn,AFKPGC,JukeAlert]
 commands:
   dismiss:
     description: "Permanently dismiss the guide for a specific event"

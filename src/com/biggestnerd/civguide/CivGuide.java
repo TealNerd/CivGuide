@@ -14,6 +14,7 @@ import com.biggestnerd.civguide.executors.CivPetExecutor;
 import com.biggestnerd.civguide.executors.CombatTagExecutor;
 import com.biggestnerd.civguide.executors.FactoryModExecutor;
 import com.biggestnerd.civguide.executors.ItemExchangeExecutor;
+import com.biggestnerd.civguide.executors.JukeAlertExecutor;
 import com.biggestnerd.civguide.executors.MustercullExecutor;
 import com.biggestnerd.civguide.executors.PrisonPearlExecutor;
 import com.biggestnerd.civguide.executors.RandomSpawnExecutor;
@@ -41,6 +42,7 @@ public class CivGuide extends JavaPlugin {
 		new CombatTagExecutor();
 		new FactoryModExecutor();
 		new ItemExchangeExecutor();
+		new JukeAlertExecutor();
 		new MustercullExecutor();
 		new PrisonPearlExecutor();
 		new RandomSpawnExecutor();

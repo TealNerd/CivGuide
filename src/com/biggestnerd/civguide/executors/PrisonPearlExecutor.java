@@ -1,7 +1,9 @@
 package com.biggestnerd.civguide.executors;
 
 import org.bukkit.Bukkit;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
@@ -31,5 +33,12 @@ public class PrisonPearlExecutor extends GuideExecutor {
 	@EventHandler
 	public void onPrisonPearl(PrisonPearlEvent event) {
 		sendEventMessage(event.getEventName(), event.getPrisonPearl().getImprisonedPlayer());
+	}
+	
+	@EventHandler
+	public void onEntityDeath(EntityDeathEvent event) {
+		if(event.getEntityType() == EntityType.PLAYER && event.getEntity().getKiller() != null) {
+			sendEventMessage(event.getEventName(), event.getEntity().getKiller());
+		}
 	}
 }

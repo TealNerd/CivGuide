@@ -19,10 +19,26 @@ PrisonPearl:
     text: When you kill another player while holding a pearl, that player will be imprisoned in the end until released. Pearls must be stored in a container with coal or they will be freed when the server restarts.
   PrisonPearlEvent:
     text: When a player is pearled they will be trapped in the end until they're freed. If you're pearled, you can use the command /ppl to get the location of your pearl in the overworld.
+  KilledPlayer:
+    events:
+      - EntityDeathEvent
+    text: When you kill another player while holding a pearl, that player will be imprisoned in the end until released. Pearls must be stored in a container with coal or they will be freed when the server restarts.
 Citadel:
   url: https://github.com/civcraft/citadel/wiki
   ReinforcementDamageEvent:
     text: Blocks can be reinforced with stone, iron, and diamond. Reinforced blocks need to be broken multiple times before they will break for good. If you reinforce a something that can be opened such as a door or chest it will only be accessible to the people on your NameLayer group
+  BlockPlaceEvent:
+    text: When you place blocks, you can reinforce them with stone, iron, or diamond by doing the command /ctr and clicking the block with any of those items. Reinforced blocks need to be broken multiple times before the block will actually break. If you reinforce a something that can be opened such as a door or chest it will only be accessible to the people on your NameLayer group
+  GetReinforcementMaterial:
+    event:
+      - PlayerPickupItemEvent
+      - InventoryClickEvent
+    trigger:
+      material: DIAMOND|IRON_INGOT|STONE
+      duras:
+        - 0
+        - 1
+    text: When you place blocks, you can reinforce them with stone, iron, or diamond by doing the command /ctr and clicking the block with any of those items. Reinforced blocks need to be broken multiple times before the block will actually break. If you reinforce a something that can be opened such as a door or chest it will only be accessible to the people on your NameLayer group
 FactoryMod:
   url: https://github.com/civcraft/factorymod/wiki
   PlayerInteractEvent:
@@ -93,6 +109,14 @@ BetterShards:
   url: https://github.com/Civcraft/BetterShards/wiki/Features
   PlayerArrivedChangeServerEvent:
     text: You have just switched shards. More info on bettershards here
+JukeAlert:
+  GetSnitchBlock:
+    events:
+      - InventoryClickEvent
+      - PlayerPickupItemEvent
+    trigger: 
+      material: JUKEBOX|NOTE_BLOCK
+    text: When you place a jukebox or noteblock and reinforce it on a group it becomes a snitch. Snitches have a field 23x23x23 blocks centered on the snitch. If a player not on the snitch's group enters the field, everyone on the group will be sent a message notifying them of the entry. Jukebox snitches also log when players break blocks, open chests, etc within their field. You can check Jukebox logs with the command /jainfo when standing near your snitch
 
 sql:
   dbname: minecraft
