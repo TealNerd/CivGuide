@@ -45,7 +45,6 @@ RealisticBiomes:
   PlayerInteractEvent:
     text: RealisticBiomes is a plugin to limit plant growth. Hit the ground with a crop, or right click a crop with a stick to see how long it will take to grow, and how far along it is. Most crops are persistant, taking a set amount of time to grow based on where it's planted.
 ArthropodEgg:
-  url: http://biggestnerd.com
   GetBainSword:
     events:
       - PlayerPickupItemEvent
