@@ -36,7 +36,7 @@ public class RealisticBiomesExecutor extends GuideExecutor {
 			}
 		}
 		if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-			if(event.getClickedBlock().getType() == Material.SOIL && MaterialAliases.getConfig(rbPlugin.materialGrowth, event.getClickedBlock()) != null) {
+			if(event.getClickedBlock().getType() == Material.SOIL && MaterialAliases.getConfig(rbPlugin.materialGrowth, event.getItem()) != null) {
 				sendEventMessage(event.getEventName(), event.getPlayer());
 			}
 		}
