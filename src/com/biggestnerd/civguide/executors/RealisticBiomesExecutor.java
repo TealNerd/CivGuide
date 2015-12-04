@@ -5,16 +5,11 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import com.biggestnerd.civguide.CivGuide;
 import com.untamedears.realisticbiomes.RealisticBiomes;
 import com.untamedears.realisticbiomes.utils.MaterialAliases;
 
 public class RealisticBiomesExecutor extends GuideExecutor {
 
-	public RealisticBiomesExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "RealisticBiomes";

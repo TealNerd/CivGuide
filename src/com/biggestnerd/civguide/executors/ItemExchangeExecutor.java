@@ -6,16 +6,11 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 
-import com.biggestnerd.civguide.CivGuide;
 import com.untamedears.ItemExchange.ItemExchangePlugin;
 import com.untamedears.ItemExchange.utility.ItemExchange;
 
 public class ItemExchangeExecutor extends GuideExecutor {
 
-	public ItemExchangeExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "ItemExchange";

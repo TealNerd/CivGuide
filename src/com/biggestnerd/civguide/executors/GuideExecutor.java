@@ -23,8 +23,8 @@ public abstract class GuideExecutor implements Listener {
 	protected CivGuide plugin;
 	protected ResponseManager responseMan;
 	
-	public GuideExecutor(CivGuide plugin) {
-		this.plugin = plugin;
+	protected GuideExecutor() {
+		this.plugin = CivGuide.getInstance();
 		if(plugin.getServer().getPluginManager().isPluginEnabled(getPluginName())) {
 			FileConfiguration config = plugin.getConfig();
 			if(config.getConfigurationSection(getPluginName()) != null) {

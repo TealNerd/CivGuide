@@ -6,15 +6,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import com.biggestnerd.civguide.CivGuide;
 import com.untamedears.PrisonPearl.events.PrisonPearlEvent;
 
 public class PrisonPearlExecutor extends GuideExecutor {
 
-	public PrisonPearlExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "PrisonPearl";

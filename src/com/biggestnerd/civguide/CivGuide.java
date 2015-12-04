@@ -33,16 +33,17 @@ public class CivGuide extends JavaPlugin {
 		GuideCommandHandler gc = new GuideCommandHandler();
 		getCommand("guide").setExecutor(gc);
 		getCommand("dismiss").setExecutor(gc);
-		new ArthroEggExecutor(this);
-		new CitadelExecutor(this);
-		new CivPetExecutor(this);
-		new CombatTagExecutor(this);
-		new FactoryModExecutor(this);
-		new ItemExchangeExecutor(this);
-		new MustercullExecutor(this);
-		new PrisonPearlExecutor(this);
-		new RandomSpawnExecutor(this);
-		new RealisticBiomesExecutor(this);
+		new ArthroEggExecutor();
+		new BetterShardsExecutor();
+		new CitadelExecutor();
+		new CivPetExecutor();
+		new CombatTagExecutor();
+		new FactoryModExecutor();
+		new ItemExchangeExecutor();
+		new MustercullExecutor();
+		new PrisonPearlExecutor();
+		new RandomSpawnExecutor();
+		new RealisticBiomesExecutor();
 	}
 	
 	@Override

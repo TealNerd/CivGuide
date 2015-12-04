@@ -5,14 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.entity.EntityTameEvent;
 
-import com.biggestnerd.civguide.CivGuide;
-
 public class CivPetExecutor extends GuideExecutor {
 
-	public CivPetExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "CivPets";

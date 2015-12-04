@@ -4,13 +4,7 @@ import org.bukkit.entity.Animals;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
-import com.biggestnerd.civguide.CivGuide;
-
 public class MustercullExecutor extends GuideExecutor {
-
-	public MustercullExecutor(CivGuide plugin) {
-		super(plugin);
-	}
 	
 	@Override
 	public String getPluginName() {

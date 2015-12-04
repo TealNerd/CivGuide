@@ -8,15 +8,10 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import com.biggestnerd.civguide.CivGuide;
 import com.github.igotyou.FactoryMod.FactoryModPlugin;
 
 public class FactoryModExecutor extends GuideExecutor {
 
-	public FactoryModExecutor(CivGuide plugin) {
-		super(plugin);
-	}
-	
 	@Override
 	public String getPluginName() {
 		return "FactoryMod";

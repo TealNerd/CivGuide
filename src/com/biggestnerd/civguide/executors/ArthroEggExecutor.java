@@ -6,13 +6,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCreativeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import com.biggestnerd.civguide.CivGuide;
-
 public class ArthroEggExecutor extends GuideExecutor {
-
-	public ArthroEggExecutor(CivGuide plugin) {
-		super(plugin);
-	}
 	
 	@Override
 	public String getPluginName() {
